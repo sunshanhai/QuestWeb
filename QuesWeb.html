@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时代新材客户反馈调研与信息收集表单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>时代新材客户反馈调研与信息收集表单</h2>
+        <form action="https://formspree.io/f/xrbzlbpb" method="POST">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for ="name">公司:</label>
+            <input type="text" id="company" name="name" required>
+
+            <label for="email">电子邮件:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="option">您购买的产品是:</label>
+            <select id="option" name="option" required>
+                <option value="option0">无</option>
+                <option value="option1">隔热棉</option>
+                <option value="option2">聚氨酯减震块</option>
+                <option value="option3">风扇叶片前端保护膜</option>
+            </select>
+
+            <label for="option">您对于FMEA系统反馈的体验：</label>
+            <select id="option" name="option" required>
+                <option value="option0">待评价</option>
+                <option value="option1">0分</option>
+                <option value="option2">5分</option>
+                <option value="option3">10分</option>
+            </select>
+
+            <label for="option">您对于XXX系统反馈的体验：</label>
+            <select id="option" name="option" required>
+                <option value="option0">待评价</option>
+                <option value="option1">0分</option>
+                <option value="option2">5分</option>
+                <option value="option3">10分</option>
+            </select>
+
+            <label for="comments">您对于产品的意见:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <label for="comments">您对于售后服务的意见</label>
+            <textarea id="comments" name="comments" rows="5" required></textarea>
+
+            <button type="submit">提交</button>
+        </form>
+    </div>
+
+</body>
+</html>
