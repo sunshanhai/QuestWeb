@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>时代新材客户反馈调研与信息收集表单</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            overflow-y: auto;
         }
         .container {
             background-color: #ffffff;
@@ -22,6 +20,7 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             max-width: 500px;
             width: 100%;
+            margin: 20px auto;
         }
         h2 {
             text-align: center;
@@ -37,6 +36,10 @@
             margin: 8px 0 16px 0;
             border: 1px solid #cccccc;
             border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #customInput {
+            display: none; /* 默认隐藏 */
         }
         button {
             width: 100%;
@@ -73,18 +76,22 @@
                 <option value="隔热棉">隔热棉</option>
                 <option value="聚氨酯减震块">聚氨酯减震块</option>
                 <option value="风扇叶片前端保护膜">风扇叶片前端保护膜</option>
+                <option value="其它">其它（请注明）</option>
             </select>
 
-            <label for="option">您对于FMEA系统反馈的体验：</label>
-            <select id="option" name="option" required>
+            <!-- 自定义输入框，默认隐藏 -->
+             <input type="text" id="customInput" name="customOption" placeholder="请注明您购买的产品">
+
+            <label for="fmea">您对于FMEA系统反馈的体验：</label>
+            <select id="fmea" name="fmea" required>
                 <option value="待评价">待评价</option>
                 <option value="0分">0分</option>
                 <option value="5分">5分</option>
                 <option value="10分">10分</option>
             </select>
 
-            <label for="option">您对于XXX系统反馈的体验：</label>
-            <select id="option" name="option" required>
+            <label for="xxx">您对于XXX系统反馈的体验：</label>
+            <select id="xxx" name="xxx" required>
                 <option value="待评价">待评价</option>
                 <option value="0分">0分</option>
                 <option value="5分">5分</option>
@@ -100,6 +107,20 @@
             <button type="submit">提交</button>
         </form>
     </div>
+
+    <script>
+        // JavaScript部分
+        document.getElementById('option').addEventListener('change', function() {
+            var customInput = document.getElementById('customInput');
+            if (this.value === '其它') {
+                customInput.style.display = 'block'; // 显示文本框
+                customInput.required = true; // 设置为必填
+            } else {
+                customInput.style.display = 'none'; // 隐藏文本框
+                customInput.required = false; // 移除必填
+            }
+        });
+    </script>
 
 </body>
 </html>
