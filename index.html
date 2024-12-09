@@ -88,7 +88,7 @@
             <input type="email" id="email" name="email" required>
 
             <label for="customIdOption">您所在的公司是:</label>
-            <select id="customIdOption" name="customIdOption" required>
+            <select id="customIdOption" name="顾客所在公司" required>
                 <option value="无">无</option>
                 <option value="博戈橡胶塑料(无锡)有限公司">博戈橡胶塑料(无锡)有限公司</option>
                 <option value="博戈橡胶塑料(株洲)有限公司">博戈橡胶塑料(株洲)有限公司</option>
@@ -104,7 +104,7 @@
              <input type="text" id="customId" name="customIdOption" placeholder="请注明您所在的公司">
 
             <label for="customPostOption">您所从事的岗位是:</label>
-            <select id="customPostOption" name="customPostOption" required>
+            <select id="customPostOption" name="顾客所从事岗位" required>
                 <option value="无">无</option>
                 <option value="采购">采购</option>
                 <option value="物流">物流</option>
@@ -114,7 +114,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPost" name="customPostOption" placeholder="请注明您所在的公司">
+             <input type="text" id="customPost" name="customPostOption" placeholder="请注明您所从事的岗位">
 
             <label for="customPurchaseOption">您公司所使用的产品是（可多选）:</label>
             <select id="customPurchaseOption" name="customPurchaseOption" required>
@@ -126,7 +126,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPurchase" name="customPurchaseOption" placeholder="请注明您所在的公司">
+             <input type="text" id="customPurchase" name="顾客所使用产品" placeholder="请注明您所使用的产品">
  
             <label for="performance">我们产品是否能满足您公司所需的性能要求?</label>
             <select id="performance" name="performance" required>
@@ -137,7 +137,7 @@
             </select>
 
             <label for="technicalExchangeEvaluation">您对我们技术交流的评价是?</label>
-            <select id="technicalExchangeEvaluation" name="technicalExchangeEvaluation" required>
+            <select id="technicalExchangeEvaluation" name="顾客对我们技术交流的评价" required>
                 <option value="待评价">待评价</option>
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -146,7 +146,7 @@
             </select>
 
             <label for="processQuality">与其他供应商的产品相比，您对我们产品的质量(外观、制造工艺方面)是否满意?</label>
-            <select id="processQuality" name="processQuality" required>
+            <select id="processQuality" name="顾客对我们产品质量(外观、制造工艺方面)的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -155,7 +155,7 @@
             </select>
 
             <label for="qualityStability">与其他供应商的产品相比，您对我们产品的质量（性能稳定性）是否满意?</label>
-            <select id="qualityStability" name="qualityStability" required>
+            <select id="qualityStability" name="顾客对我们产品质量(性能稳定性)的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -164,7 +164,7 @@
             </select>
 
             <label for="maintainability">与其他供应商的产品相比，您对我们产品的质量（可维护性）是否满意?</label>
-            <select id="maintainability" name="maintainability" required>
+            <select id="maintainability" name="顾客对我们产品质量(可维护性)的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -173,7 +173,7 @@
             </select>
 
             <label for="costPerformance">与其他供应商的产品相比，我们产品的性价比?</label>
-            <select id="costPerformance" name="costPerformance" required>
+            <select id="costPerformance" name="顾客对我们产品性价比的评价" required>
                 <option value="待评价">待评价</option> 
                 <option value="性价比高，愿意回购">满意</option>
                 <option value="性价比一般，勉强接受">基本满意</option>
@@ -181,7 +181,7 @@
             </select>
 
             <label for="timelyDelivery">我们产品交付是否及时?</label>
-            <select id="timelyDelivery" name="timelyDelivery" required>
+            <select id="timelyDelivery" name="顾客对我们交付及时性的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="及时">满意</option>
                 <option value="一般，还能接受">基本满意</option>
@@ -189,7 +189,7 @@
             </select>
 
             <label for="qualifiedSituation">您对我们产品的开箱合格情况是否满意?</label>
-            <select id="qualifiedSituation" name="qualifiedSituation" required>
+            <select id="qualifiedSituation" name="顾客对我们产品开箱合格情况的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -198,7 +198,7 @@
             </select>
 
             <label for="timelinessOfService">您对我们服务的及时性是否满意?</label>
-            <select id="timelinessOfService" name="timelinessOfService" required>
+            <select id="timelinessOfService" name="顾客对我们服务及时性的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -207,7 +207,7 @@
             </select>
 
             <label for="onSiteServiceQuality">您对我们的现场服务质量是否满意?</label>
-            <select id="onSiteServiceQuality" name="onSiteServiceQuality" required>
+            <select id="onSiteServiceQuality" name="顾客对我们现场服务质量的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -216,7 +216,7 @@
             </select>
 
             <label for="productTrainingServices">您对我们提供的产品培训服务是否满意?</label>
-            <select id="productTrainingServices" name="productTrainingServices" required>
+            <select id="productTrainingServices" name="顾客对我们提供产品培训服务的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -225,7 +225,7 @@
             </select>
 
             <label for="antiRepairTimelinessRate">您对我们产品的返修及时率是否满意?</label>
-            <select id="antiRepairTimelinessRate" name="antiRepairTimelinessRate" required>
+            <select id="antiRepairTimelinessRate" name="顾客对我们产品反修及时率的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
@@ -234,7 +234,7 @@
             </select>
 
             <label for="stabilityOfProductPerformanceAfterRepair">您对我们产品返修后的产品性能稳定性是否满意?</label>
-            <select id="stabilityOfProductPerformanceAfterRepair" name="stabilityOfProductPerformanceAfterRepair" required>
+            <select id="stabilityOfProductPerformanceAfterRepair" name="顾客对我们反修后产品性能稳定性的满意度" required>
                 <option value="待评价">待评价</option> 
                 <option value="满意">满意</option>
                 <option value="基本满意">基本满意</option>
