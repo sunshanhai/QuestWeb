@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>时代新材新材料事业部客户意见反馈调研</title>
+    <!-- 引入 Select2 的 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         html, body {
             height: 100%;
@@ -41,7 +43,7 @@
             font-size: 14px;
             color: #555;
         }
-        input, textarea, select {
+        select, input, textarea {
             width: 100%;
             padding: 10px;
             margin: 8px 0 16px 0;
@@ -49,6 +51,40 @@
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 14px;
+        }
+        /* 调整 Select2 下拉菜单的最大高度 */
+        .select2-container .select2-results__options {
+            max-height: 200px; /* 根据需要调整高度 */
+            overflow-y: auto;
+        }
+        /* 自定义已选标签的样式 */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #4CAF50; /* 标签背景色 */
+            border: 1px solid #4CAF50; /* 标签边框 */
+            color: white; /* 标签文字颜色 */
+            padding-right: 25px; /* 预留空间给删除按钮 */
+            position: relative;
+            border-radius: 5px; /* 增加圆角 */
+            font-size: 14px; /* 调整字体大小 */
+            margin-top: 5px; /* 调整标签之间的间距 */
+        }        
+        /* 调整删除按钮的位置和大小 */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 16px; /* 调整删除按钮的大小 */
+            line-height: 1;
+            padding: 0 2px; /* 调整删除按钮的点击区域 */
+            border-radius: 50%;
+        }
+        /* 增加删除按钮的可点击区域 */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         #customId, #customPost, #customPurchase {
             display: none; /* 默认隐藏 */
@@ -68,6 +104,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -101,7 +138,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customId" name="其它所在的公司" placeholder="请注明您所在的公司">
+            <input type="text" id="customId" name="其它所在的公司" placeholder="请注明您所在的公司">
 
             <label for="customPostOption">您所从事的岗位是:</label>
             <select id="customPostOption" name="顾客所从事岗位" required>
@@ -114,7 +151,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPost" name="其它从事的岗位" placeholder="请注明您所从事的岗位">
+            <input type="text" id="customPost" name="其它从事的岗位" placeholder="请注明您所从事的岗位">
 
             <!-- 客户使用产品部分（多选） -->
             <label for="customPurchaseOption">您公司所使用的产品是（可多选）:</label>
@@ -127,7 +164,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPurchase" name="其他所使用产品" placeholder="请注明您所使用的产品">
+            <input type="text" id="customPurchase" name="其他所使用产品" placeholder="请注明您所使用的产品">
 
  
             <label for="performance">我们产品是否能满足您公司所需的性能要求?</label>
@@ -251,64 +288,61 @@
         </form>
     </div>
 
+    <!-- 引入 jQuery 和 Select2 的 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         // JavaScript部分
-    
-        /**
-         * 处理单选下拉菜单的变化，显示或隐藏自定义输入框
-         * @param {string} selectId - 下拉菜单的ID
-         * @param {string} inputId - 自定义输入框的ID
-         */
-        function handleSelectChange(selectId, inputId) {
-            const selectElement = document.getElementById(selectId);
-            const customInput = document.getElementById(inputId);
-    
-            selectElement.addEventListener('change', function() {
-                if (this.value === '其它') {
-                    customInput.style.display = 'block'; // 显示文本框
-                    customInput.required = true; // 设置为必填
+
+        $(document).ready(function() {
+            // 初始化 Select2
+            $('#customPurchaseOption').select2({
+                placeholder: "请选择您公司所使用的产品",
+                allowClear: true
+            });
+
+            // 处理公司选择部分（单选）
+            $('#customIdOption').on('change', function() {
+                var customId = $('#customId');
+                if ($(this).val() === '其它') {
+                    customId.show(); // 显示文本框
+                    customId.prop('required', true); // 设置为必填
                 } else {
-                    customInput.style.display = 'none'; // 隐藏文本框
-                    customInput.required = false; // 移除必填
-                    customInput.value = ''; // 清空输入框内容
+                    customId.hide(); // 隐藏文本框
+                    customId.prop('required', false); // 移除必填
+                    customId.val(''); // 清空文本框内容
                 }
             });
-        }
-    
-        /**
-         * 处理多选下拉菜单的变化，特别是“其它”选项
-         * @param {string} selectId - 下拉菜单的ID
-         * @param {string} inputId - 自定义输入框的ID
-         */
-        function handleMultiSelectChange(selectId, inputId) {
-            const selectElement = document.getElementById(selectId);
-            const customInput = document.getElementById(inputId);
-    
-            selectElement.addEventListener('change', function() {
-                const selectedOptions = Array.from(selectElement.options)
-                    .filter(option => option.selected)
-                    .map(option => option.value);
-                
+
+            // 处理岗位选择部分（单选）
+            $('#customPostOption').on('change', function() {
+                var customPost = $('#customPost');
+                if ($(this).val() === '其它') {
+                    customPost.show(); // 显示文本框
+                    customPost.prop('required', true); // 设置为必填
+                } else {
+                    customPost.hide(); // 隐藏文本框
+                    customPost.prop('required', false); // 移除必填
+                    customPost.val(''); // 清空文本框内容
+                }
+            });
+
+            // 处理客户使用产品部分（多选）
+            $('#customPurchaseOption').on('change', function() {
+                var customPurchase = $('#customPurchase');
+                var selectedOptions = $(this).val() || [];
                 if (selectedOptions.includes('其它')) {
-                    customInput.style.display = 'block'; // 显示自定义输入框
-                    customInput.required = true; // 设置为必填
+                    customPurchase.show(); // 显示自定义输入框
+                    customPurchase.prop('required', true); // 设置为必填
+                    customPurchase.focus(); // 自动聚焦输入框
                 } else {
-                    customInput.style.display = 'none'; // 隐藏自定义输入框
-                    customInput.required = false; // 移除必填
-                    customInput.value = ''; // 清空输入框内容
+                    customPurchase.hide(); // 隐藏自定义输入框
+                    customPurchase.prop('required', false); // 移除必填
+                    customPurchase.val(''); // 清空输入框内容
                 }
             });
-        }
-    
-        // 初始化事件监听
-    
-        // 处理公司选择部分（单选）
-        handleSelectChange('customIdOption', 'customId');
-    
-        // 处理岗位选择部分（单选）
-        handleSelectChange('customPostOption', 'customPost');
-    
-        // 处理客户使用产品部分（多选）
-        handleMultiSelectChange('customPurchaseOption', 'customPurchase');
+        });
     </script>
-    
+</body>
+</html>
