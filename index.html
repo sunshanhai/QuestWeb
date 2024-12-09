@@ -101,7 +101,7 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customId" name="customIdOption" placeholder="请注明您所在的公司">
+             <input type="text" id="customId" name="其它所在的公司" placeholder="请注明您所在的公司">
 
             <label for="customPostOption">您所从事的岗位是:</label>
             <select id="customPostOption" name="顾客所从事岗位" required>
@@ -114,19 +114,19 @@
                 <option value="其它">其它（请注明）</option>
             </select>
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPost" name="customPostOption" placeholder="请注明您所从事的岗位">
+             <input type="text" id="customPost" name="其它从事的岗位" placeholder="请注明您所从事的岗位">
 
             <label for="customPurchaseOption">您公司所使用的产品是（可多选）:</label>
-            <select id="customPurchaseOption" name="顾客所使用产品" required>
+            <select id="customPurchaseOption" name="顾客所使用产品[]" multiple required>
                 <option value="无">无</option>
                 <option value="汽车减振产品">汽车减振产品</option>
                 <option value="有机硅产品">有机硅产品</option>
                 <option value="RTM上盖产品">RTM上盖产品</option>
                 <option value="风电产品保护膜">风电产品保护膜</option>
                 <option value="其它">其它（请注明）</option>
-            </select>
+            </select>             
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customPurchase" name="customPurchaseOption" placeholder="请注明您所使用的产品">
+             <input type="text" id="customPurchase" name="其它使用的产品" placeholder="请注明您所使用的产品">
  
             <label for="performance">我们产品是否能满足您公司所需的性能要求?</label>
             <select id="performance" name="performance" required>
@@ -251,46 +251,62 @@
 
     <script>
         // JavaScript部分
-        // 处理公司选择部分
-        document.getElementById('customIdOption').addEventListener('change', function() {
-            var customId = document.getElementById('customId');
-            if (this.value === '其它') {
-                customId.style.display = 'block'; // 显示文本框
-                customId.required = true; // 设置为必填
-            } else {
-                customId.style.display = 'none'; // 隐藏文本框
-                customId.required = false; // 移除必填
-                customId.value = ''; // 清除文本框内容
-            }
-        });
-
-        // 处理岗位选择部分
-        document.getElementById('customPostOption').addEventListener('change', function() {
-            var customPost = document.getElementById('customPost');
-            if (this.value === '其它') {
-                customPost.style.display = 'block'; // 显示文本框
-                customPost.required = true; // 设置为必填
-            } else {
-                customPost.style.display = 'none'; // 隐藏文本框
-                customPost.required = false; // 移除必填
-                customPost.value = ''; // 清空输入框内容
-            }
-        });
-
-        // 处理客户使用产品部分
-        document.getElementById('customPurchaseOption').addEventListener('change', function() {
-            var customPurchase = document.getElementById('customPurchase');
-            if (this.value === '其它') {
-                customPurchase.style.display = 'block'; // 显示文本框
-                customPurchase.required = true; // 设置为必填
-            } else {
-                customPurchase.style.display = 'none'; // 隐藏文本框
-                customPurchase.required = false; // 移除必填
-                customPurchase.value = ''; // 清空输入框内容
-            }
-        });
-
+    
+        /**
+         * 处理单选下拉菜单的变化，显示或隐藏自定义输入框
+         * @param {string} selectId - 下拉菜单的ID
+         * @param {string} inputId - 自定义输入框的ID
+         */
+        function handleSelectChange(selectId, inputId) {
+            const selectElement = document.getElementById(selectId);
+            const customInput = document.getElementById(inputId);
+    
+            selectElement.addEventListener('change', function() {
+                if (this.value === '其它') {
+                    customInput.style.display = 'block'; // 显示文本框
+                    customInput.required = true; // 设置为必填
+                } else {
+                    customInput.style.display = 'none'; // 隐藏文本框
+                    customInput.required = false; // 移除必填
+                    customInput.value = ''; // 清空输入框内容
+                }
+            });
+        }
+    
+        /**
+         * 处理多选下拉菜单的变化，特别是“其它”选项
+         * @param {string} selectId - 下拉菜单的ID
+         * @param {string} inputId - 自定义输入框的ID
+         */
+        function handleMultiSelectChange(selectId, inputId) {
+            const selectElement = document.getElementById(selectId);
+            const customInput = document.getElementById(inputId);
+    
+            selectElement.addEventListener('change', function() {
+                const selectedOptions = Array.from(selectElement.options)
+                    .filter(option => option.selected)
+                    .map(option => option.value);
+                
+                if (selectedOptions.includes('其它')) {
+                    customInput.style.display = 'block'; // 显示自定义输入框
+                    customInput.required = true; // 设置为必填
+                } else {
+                    customInput.style.display = 'none'; // 隐藏自定义输入框
+                    customInput.required = false; // 移除必填
+                    customInput.value = ''; // 清空输入框内容
+                }
+            });
+        }
+    
+        // 初始化事件监听
+    
+        // 处理公司选择部分（单选）
+        handleSelectChange('customIdOption', 'customId');
+    
+        // 处理岗位选择部分（单选）
+        handleSelectChange('customPostOption', 'customPost');
+    
+        // 处理客户使用产品部分（多选）
+        handleMultiSelectChange('customPurchaseOption', 'customPurchase');
     </script>
-
-</body>
-</html>
+    
