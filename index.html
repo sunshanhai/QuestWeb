@@ -54,20 +54,22 @@
         }
         /* 调整 Select2 下拉菜单的最大高度 */
         .select2-container .select2-results__options {
-            max-height: 200px; /* 根据需要调整高度 */
+            max-height: 200px;
             overflow-y: auto;
         }
         /* 自定义已选标签的样式 */
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
-            background-color: #4CAF50; /* 标签背景色 */
-            border: 1px solid #4CAF50; /* 标签边框 */
-            color: white; /* 标签文字颜色 */
-            padding-right: 25px; /* 预留空间给删除按钮 */
+            background-color: #4CAF50;
+            border: 1px solid #4CAF50;
+            color: white;
+            padding-right: 25px;
             position: relative;
-            border-radius: 5px; /* 增加圆角 */
-            font-size: 14px; /* 调整字体大小 */
-            margin-top: 5px; /* 调整标签之间的间距 */
-        }        
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+            pointer-events: none; /* 禁止标签响应点击事件 */
+            cursor: default;
+        }
         /* 调整删除按钮的位置和大小 */
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
             position: absolute;
@@ -77,17 +79,19 @@
             cursor: pointer;
             color: white;
             font-weight: bold;
-            font-size: 16px; /* 调整删除按钮的大小 */
+            font-size: 16px;
             line-height: 1;
-            padding: 0 2px; /* 调整删除按钮的点击区域 */
+            padding: 0 2px;
             border-radius: 50%;
+            pointer-events: auto; /* 允许删除按钮响应事件 */
+            background: transparent;
         }
         /* 增加删除按钮的可点击区域 */
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
         #customId, #customPost, #customPurchase {
-            display: none; /* 默认隐藏 */
+            display: none;
         }
         button {
             width: 100%;
@@ -293,13 +297,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        // JavaScript部分
-
         $(document).ready(function() {
             // 初始化 Select2
             $('#customPurchaseOption').select2({
                 placeholder: "请选择您公司所使用的产品",
-                allowClear: true
+                allowClear: false
             });
 
             // 处理公司选择部分（单选）
@@ -336,11 +338,18 @@
                     customPurchase.show(); // 显示自定义输入框
                     customPurchase.prop('required', true); // 设置为必填
                     customPurchase.focus(); // 自动聚焦输入框
+                    customPurchase[0].scrollIntoView({ behavior: 'smooth' }); // 平滑滚动到输入框
                 } else {
                     customPurchase.hide(); // 隐藏自定义输入框
                     customPurchase.prop('required', false); // 移除必填
                     customPurchase.val(''); // 清空输入框内容
                 }
+            });
+
+            // 阻止点击标签区域触发事件
+            $(document).on('click', '.select2-selection__choice', function(e) {
+                e.stopPropagation(); // 阻止事件冒泡
+                // 你可以在这里添加其他逻辑，例如打开下拉菜单
             });
         });
     </script>
