@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>时代新材客户反馈调研与信息收集表单</title>
+    <title>时代新材新材料事业部客户意见反馈调研</title>
     <style>
         html, body {
             height: 100%;
@@ -19,11 +19,22 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             max-width: 500px;
-            width: 100%;
-            margin: 20px auto;
+            width: 90%;
+            margin: 40px auto;
         }
-        h2 {
-            text-align: center;
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 90px; /* 根据需要调整logo大小 */
+            height: auto;
+            margin-right: 15px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 21px;
             color: #333;
         }
         label {
@@ -37,8 +48,9 @@
             border: 1px solid #cccccc;
             border-radius: 5px;
             box-sizing: border-box;
+            font-size: 14px;
         }
-        #customInput {
+        #customId, #customPost, #customPurchase {
             display: none; /* 默认隐藏 */
         }
         button {
@@ -59,50 +71,179 @@
 <body>
 
     <div class="container">
-        <h2>时代新材客户反馈调研与信息收集表单</h2>
+        <!-- Header部分，包含Logo和标题 -->
+        <div class="header">
+            <img src="ZCLogo.jpeg" alt="公司Logo"> <!-- 请将 "logo.png" 替换为您的logo图片路径 -->
+            <h2>时代新材新材料事业部客户意见反馈调研</h2>
+        <!-- <h2>时代新材新材料事业部客户意见反馈调研</h2> -->
+
+        </div>
+
+        <!-- 表单部分 -->
         <form action="https://formspree.io/f/xrbzlbpb" method="POST">
-            <label for="name">姓名:</label>
+            <label for="name">您的姓名:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for ="company">公司:</label>
-            <input type="text" id="company" name="company" required>
-
-            <label for="email">电子邮件:</label>
+            <label for="email">您的电子邮件地址:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="option">您购买的产品是:</label>
-            <select id="option" name="option" required>
+            <label for="customIdOption">您所在的公司是:</label>
+            <select id="customIdOption" name="customIdOption" required>
                 <option value="无">无</option>
-                <option value="隔热棉">隔热棉</option>
-                <option value="聚氨酯减震块">聚氨酯减震块</option>
-                <option value="风扇叶片前端保护膜">风扇叶片前端保护膜</option>
+                <option value="博戈橡胶塑料(无锡)有限公司">博戈橡胶塑料(无锡)有限公司</option>
+                <option value="博戈橡胶塑料(株洲)有限公司">博戈橡胶塑料(株洲)有限公司</option>
+                <option value="湖南中车时代电驱科技有限公司">湖南中车时代电驱科技有限公司</option>
+                <option value="郑州深澜动力科技有限公司">郑州深澜动力科技有限公司</option>
+                <option value="一汽东机工减振器有限公司">一汽东机工减振器有限公司</option>
+                <option value="株洲所综合能源事业部">株洲所综合能源事业部</option>
+                <option value="蜂巢能源科技股份有限公司">蜂巢能源科技股份有限公司</option>
+                <option value="东方电气(天津)风电叶片工程有限公司">东方电气(天津)风电叶片工程有限公司</option>
                 <option value="其它">其它（请注明）</option>
             </select>
-
             <!-- 自定义输入框，默认隐藏 -->
-             <input type="text" id="customInput" name="customOption" placeholder="请注明您购买的产品">
+             <input type="text" id="customId" name="customIdOption" placeholder="请注明您所在的公司">
 
-            <label for="fmea">您对于FMEA系统反馈的体验：</label>
-            <select id="fmea" name="fmea" required>
+            <label for="customPostOption">您所从事的岗位是:</label>
+            <select id="customPostOption" name="customPostOption" required>
+                <option value="无">无</option>
+                <option value="采购">采购</option>
+                <option value="物流">物流</option>
+                <option value="生产">生产</option>
+                <option value="技术">技术</option>
+                <option value="质量">质量</option>
+                <option value="其它">其它（请注明）</option>
+            </select>
+            <!-- 自定义输入框，默认隐藏 -->
+             <input type="text" id="customPost" name="customPostOption" placeholder="请注明您所在的公司">
+
+            <label for="customPurchaseOption">您公司所使用的产品是（可多选）:</label>
+            <select id="customPurchaseOption" name="customPurchaseOption" required>
+                <option value="无">无</option>
+                <option value="汽车减振产品">汽车减振产品</option>
+                <option value="有机硅产品">有机硅产品</option>
+                <option value="RTM上盖产品">RTM上盖产品</option>
+                <option value="风电产品保护膜">风电产品保护膜</option>
+                <option value="其它">其它（请注明）</option>
+            </select>
+            <!-- 自定义输入框，默认隐藏 -->
+             <input type="text" id="customPurchase" name="customPurchaseOption" placeholder="请注明您所在的公司">
+ 
+            <label for="performance">我们产品是否能满足您公司所需的性能要求?</label>
+            <select id="performance" name="performance" required>
                 <option value="待评价">待评价</option>
-                <option value="0分">0分</option>
-                <option value="5分">5分</option>
-                <option value="10分">10分</option>
+                <option value="满足">满足</option>
+                <option value="基本满足">基本满足</option>
+                <option value="不满足">不满足</option>
             </select>
 
-            <label for="xxx">您对于XXX系统反馈的体验：</label>
-            <select id="xxx" name="xxx" required>
+            <label for="technicalExchangeEvaluation">您对我们技术交流的评价是?</label>
+            <select id="technicalExchangeEvaluation" name="technicalExchangeEvaluation" required>
                 <option value="待评价">待评价</option>
-                <option value="0分">0分</option>
-                <option value="5分">5分</option>
-                <option value="10分">10分</option>
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
             </select>
 
-            <label for="comments">您对于产品的意见:</label>
+            <label for="processQuality">与其他供应商的产品相比，您对我们产品的质量(外观、制造工艺方面)是否满意?</label>
+            <select id="processQuality" name="processQuality" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="qualityStability">与其他供应商的产品相比，您对我们产品的质量（性能稳定性）是否满意?</label>
+            <select id="qualityStability" name="qualityStability" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="maintainability">与其他供应商的产品相比，您对我们产品的质量（可维护性）是否满意?</label>
+            <select id="maintainability" name="maintainability" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="costPerformance">与其他供应商的产品相比，我们产品的性价比?</label>
+            <select id="costPerformance" name="costPerformance" required>
+                <option value="待评价">待评价</option> 
+                <option value="性价比高，愿意回购">满意</option>
+                <option value="性价比一般，勉强接受">基本满意</option>
+                <option value="价格太高，不降价不考虑">不满意</option>
+            </select>
+
+            <label for="timelyDelivery">我们产品交付是否及时?</label>
+            <select id="timelyDelivery" name="timelyDelivery" required>
+                <option value="待评价">待评价</option> 
+                <option value="及时">满意</option>
+                <option value="一般，还能接受">基本满意</option>
+                <option value="不及时">不满意</option>
+            </select>
+
+            <label for="qualifiedSituation">您对我们产品的开箱合格情况是否满意?</label>
+            <select id="qualifiedSituation" name="qualifiedSituation" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="timelinessOfService">您对我们服务的及时性是否满意?</label>
+            <select id="timelinessOfService" name="timelinessOfService" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="onSiteServiceQuality">您对我们的现场服务质量是否满意?</label>
+            <select id="onSiteServiceQuality" name="onSiteServiceQuality" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="productTrainingServices">您对我们提供的产品培训服务是否满意?</label>
+            <select id="productTrainingServices" name="productTrainingServices" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="antiRepairTimelinessRate">您对我们产品的返修及时率是否满意?</label>
+            <select id="antiRepairTimelinessRate" name="antiRepairTimelinessRate" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="stabilityOfProductPerformanceAfterRepair">您对我们产品返修后的产品性能稳定性是否满意?</label>
+            <select id="stabilityOfProductPerformanceAfterRepair" name="stabilityOfProductPerformanceAfterRepair" required>
+                <option value="待评价">待评价</option> 
+                <option value="满意">满意</option>
+                <option value="基本满意">基本满意</option>
+                <option value="不满意">不满意</option>
+                <option value="很不满意"> 很不满意</option>
+            </select>
+
+            <label for="comments">您对我司的意见和建议是:</label>
             <textarea id="comments" name="comments" rows="4" required></textarea>
-
-            <label for="comments">您对于售后服务的意见</label>
-            <textarea id="comments" name="comments" rows="5" required></textarea>
 
             <button type="submit">提交</button>
         </form>
@@ -110,16 +251,45 @@
 
     <script>
         // JavaScript部分
-        document.getElementById('option').addEventListener('change', function() {
-            var customInput = document.getElementById('customInput');
+        // 处理公司选择部分
+        document.getElementById('customIdOption').addEventListener('change', function() {
+            var customId = document.getElementById('customId');
             if (this.value === '其它') {
-                customInput.style.display = 'block'; // 显示文本框
-                customInput.required = true; // 设置为必填
+                customId.style.display = 'block'; // 显示文本框
+                customId.required = true; // 设置为必填
             } else {
-                customInput.style.display = 'none'; // 隐藏文本框
-                customInput.required = false; // 移除必填
+                customId.style.display = 'none'; // 隐藏文本框
+                customId.required = false; // 移除必填
+                customId.value = ''; // 清除文本框内容
             }
         });
+
+        // 处理岗位选择部分
+        document.getElementById('customPostOption').addEventListener('change', function() {
+            var customPost = document.getElementById('customPost');
+            if (this.value === '其它') {
+                customPost.style.display = 'block'; // 显示文本框
+                customPost.required = true; // 设置为必填
+            } else {
+                customPost.style.display = 'none'; // 隐藏文本框
+                customPost.required = false; // 移除必填
+                customPost.value = ''; // 清空输入框内容
+            }
+        });
+
+        // 处理客户使用产品部分
+        document.getElementById('customPurchaseOption').addEventListener('change', function() {
+            var customPurchase = document.getElementById('customPurchase');
+            if (this.value === '其它') {
+                customPurchase.style.display = 'block'; // 显示文本框
+                customPurchase.required = true; // 设置为必填
+            } else {
+                customPurchase.style.display = 'none'; // 隐藏文本框
+                customPurchase.required = false; // 移除必填
+                customPurchase.value = ''; // 清空输入框内容
+            }
+        });
+
     </script>
 
 </body>
