@@ -90,7 +90,7 @@
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        #customId, #customPost, #customPurchase {
+        #customPost, #customPurchase {
             display: none;
         }
         button {
@@ -124,12 +124,15 @@
         <!-- <form action="https://formspree.io/f/xrbzlbpb" method="POST"> -->
         <form action="https://formspree.io/f/mwpkjqvw" method="POST">
             <label for="name">您的姓名:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="客户姓名" required>
 
             <label for="email">您的电子邮件地址:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="客户电子邮箱" required>
 
-            <label for="customIdOption">您所在的公司是:</label>
+            <label for="company">您所在的公司是:</label>
+            <input type="company" id="company" name="客户电子邮箱" required>
+
+            <!-- <label for="customIdOption">您所在的公司是:</label>
             <select id="customIdOption" name="顾客所在公司" required>
                 <option value="无">无</option>
                 <option value="博戈橡胶塑料(无锡)有限公司">博戈橡胶塑料(无锡)有限公司</option>
@@ -141,9 +144,9 @@
                 <option value="蜂巢能源科技股份有限公司">蜂巢能源科技股份有限公司</option>
                 <option value="东方电气(天津)风电叶片工程有限公司">东方电气(天津)风电叶片工程有限公司</option>
                 <option value="其它">其它（请注明）</option>
-            </select>
+            </select> -->
             <!-- 自定义输入框，默认隐藏 -->
-            <input type="text" id="customId" name="其它所在的公司" placeholder="请注明您所在的公司">
+            <!-- <input type="text" id="customId" name="其它所在的公司" placeholder="请注明您所在的公司"> -->
 
             <label for="customPostOption">您所从事的岗位是:</label>
             <select id="customPostOption" name="顾客所从事岗位" required>
@@ -306,17 +309,17 @@
             });
 
             // 处理公司选择部分（单选）
-            $('#customIdOption').on('change', function() {
-                var customId = $('#customId');
-                if ($(this).val() === '其它') {
-                    customId.show(); // 显示文本框
-                    customId.prop('required', true); // 设置为必填
-                } else {
-                    customId.hide(); // 隐藏文本框
-                    customId.prop('required', false); // 移除必填
-                    customId.val(''); // 清空文本框内容
-                }
-            });
+//            $('#customIdOption').on('change', function() {
+//                var customId = $('#customId');
+//                if ($(this).val() === '其它') {
+//                    customId.show(); // 显示文本框
+//                    customId.prop('required', true); // 设置为必填
+//                } else {
+//                    customId.hide(); // 隐藏文本框
+//                    customId.prop('required', false); // 移除必填
+//                    customId.val(''); // 清空文本框内容
+//                }
+//            });
 
             // 处理岗位选择部分（单选）
             $('#customPostOption').on('change', function() {
